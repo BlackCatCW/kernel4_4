@@ -238,12 +238,12 @@ static int apds9802als_probe(struct i2c_client *client,
 	int i = 0;
 	int err = 0;
 
-	alscal = kmalloc(strlen(buf), GFP_KERNEL);
+	alscal = kmalloc(15, GFP_KERNEL);
 
 	if (!alscal)
 		return -1;
 
-	strcpy(alscal, buf);
+	strscpy(alscal, buf, 15);
 
 	data = kzalloc(sizeof(struct als_data), GFP_KERNEL);
 	if (data == NULL) {
